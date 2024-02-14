@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visualizzatore di Immagini da Marcatore</title>
+<style>
+  #container {
+    text-align: center;
+  }
+  #immagineVisualizzata {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="container">
+  <h2>Visualizzatore di Immagini</h2>
+  <img src="images/stemma.png" id="marcatore" alt="Stemma" style="display: none;">
+  <img src="images/finestra.jpeg" id="immagineVisualizzata" alt="Immagine da visualizzare">
+</div>
+
+<script>
+  // Funzione per controllare periodicamente se il marcatore è rilevato
+  function checkForMarcatore() {
+    var marcatore = document.getElementById("marcatore");
+    var immagineVisualizzata = document.getElementById("immagineVisualizzata");
+
+    // Controllo se il marcatore è visibile
+    if (marcatore.offsetWidth > 0 || marcatore.offsetHeight > 0) {
+      // Se il marcatore è visibile, mostro l'immagine corrispondente
+      immagineVisualizzata.style.display = "block";
+    } else {
+      // Se il marcatore non è visibile, nascondo l'immagine corrispondente
+      immagineVisualizzata.style.display = "none";
+    }
+  }
+
+  // Eseguo la funzione ogni secondo
+  setInterval(checkForMarcatore, 1000);
+</script>
+
+</body>
+</html>
